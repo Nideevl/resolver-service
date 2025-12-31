@@ -6,7 +6,10 @@ import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from dotenv import load_dotenv
 import re
+
+load_dotenv()
 
 # Configure logging (only show errors)
 logging.basicConfig(level=logging.WARNING)
@@ -17,9 +20,9 @@ app = FastAPI(title="URL Resolver Service")
 # -------- Environment Variables --------
 # Load from environment or use defaults
 # Set these in Render dashboard or .env file locally
-TECH_PORTAL_DOMAIN = os.getenv("TECH_PORTAL_DOMAIN", "tech.unblockedgames.world")
-CDN_DOMAIN_PATTERN = os.getenv("CDN_DOMAIN_PATTERN", r"cdn\.video-leech\.pro/[a-f0-9:]+")
-ALLOWED_SOURCE_DOMAINS = os.getenv("ALLOWED_SOURCE_DOMAINS", "links.modpro.blog").split(",")
+TECH_PORTAL_DOMAIN = os.getenv("TECH_PORTAL_DOMAIN")
+CDN_DOMAIN_PATTERN = os.getenv("CDN_DOMAIN_PATTERN")
+ALLOWED_SOURCE_DOMAINS = os.getenv("ALLOWED_SOURCE_DOMAINS").split(",")
 
 # -------- Request / Response Schemas --------
 class ResolveRequest(BaseModel):
