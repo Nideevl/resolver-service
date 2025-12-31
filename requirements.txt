@@ -1,6 +1,6 @@
-fastapi==0.104.1
-uvicorn==0.24.0
-selenium==4.15.0
-webdriver-manager==4.0.1
-pydantic==2.1.1 
+fastapi==0.100.1
+uvicorn==0.23.2
+selenium==4.11.2
+webdriver-manager==3.8.6
+pydantic==1.10.13  # ← MUST use 1.x version, NOT 2.x
 python-dotenv==1.0.0
