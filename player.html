@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>NikoFlix HLS Test</title>
+</head>
+<body>
+
+  <h2>NikoFlix – Local HLS Test</h2>
+
+  <video id="video" controls width="800"></video>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    const video = document.getElementById("video");
+    const source = "http://localhost:8080/output/master.m3u8";
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(source);
+      hls.attachMedia(video);
+    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      video.src = source;
+    } else {
+      alert("HLS not supported in this browser");
+    }
+  </script>
+
+</body>
+</html>
